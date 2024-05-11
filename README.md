@@ -31,13 +31,7 @@ Funcionalidades implementadas:
 ## Links
 
 - [live demo]()
-- [github repo]()
-
-## Screenshots
-
-![twitter-clone-mlatka9 vercel app_]()
-![s2]()
-![s3]()
+- [github repo](https://github.com/duma12322/Marc-Social)
 
 
 ## Install

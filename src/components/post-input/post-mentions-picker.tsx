@@ -1,8 +1,8 @@
-import { Control, UseFormSetValue, useWatch } from 'react-hook-form';
-import { SearchUserType } from '@/types/db';
-import PostMentionsInput from './post-mentions-input';
-import SelectedMentionsList from './selected-mentions-list';
-import { PostInputFormType } from './types';
+import { Control, UseFormSetValue, useWatch } from "react-hook-form";
+import { SearchUserType } from "@/types/db";
+import PostMentionsInput from "./post-mentions-input";
+import SelectedMentionsList from "./selected-mentions-list";
+import { PostInputFormType } from "./types";
 
 interface PostUserPickerProps {
   control: Control<PostInputFormType>;
@@ -13,17 +13,17 @@ interface PostUserPickerProps {
 const PostMentionsPicker = ({
   control,
   setValue,
-  disabled,
+  disabled
 }: PostUserPickerProps) => {
-  const mentions = useWatch({ control, name: 'mentions', defaultValue: [] });
+  const mentions = useWatch({ control, name: "mentions", defaultValue: [] });
 
   const setMentions = (newMentions: SearchUserType[]) => {
-    setValue('mentions', newMentions);
+    setValue("mentions", newMentions);
   };
 
   const handleRemoveMention = (userId: string) => {
     setValue(
-      'mentions',
+      "mentions",
       mentions.filter((mention) => mention.id !== userId)
     );
   };

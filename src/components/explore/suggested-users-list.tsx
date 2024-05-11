@@ -1,8 +1,8 @@
 /* eslint-disable react/no-array-index-key */
-import { useSuggestedUsersQuery } from 'src/hooks/query';
-import Masonry from 'react-masonry-css';
-import Loading from '../common/loading';
-import UserCard from '../common/user-card';
+import { useSuggestedUsersQuery } from "src/hooks/query";
+import Masonry from "react-masonry-css";
+import Loading from "../common/loading";
+import UserCard from "../common/user-card";
 
 const SuggestedUsersList = () => {
   const { data, isSuccess } = useSuggestedUsersQuery();
@@ -13,13 +13,13 @@ const SuggestedUsersList = () => {
 
   const breakpointColumnsObj = {
     default: 2,
-    768: 1,
+    768: 1
   };
 
   return (
     <>
       <h2 className="font-poppins text-lg font-medium text-primary-600 dark:text-primary-dark-600 mb-3">
-        Users to follow
+        Usuarios a seguir
       </h2>
       <Masonry
         breakpointCols={breakpointColumnsObj}

@@ -1,6 +1,6 @@
-import Loading from '../common/loading';
-import CategoriesListItem from './categories-list-item';
-import useCategoryList from './use-category-list';
+import Loading from "../common/loading";
+import CategoriesListItem from "./categories-list-item";
+import useCategoryList from "./use-category-list";
 
 const CategoriesList = () => {
   const {
@@ -9,7 +9,7 @@ const CategoriesList = () => {
     filteredCategories,
     handleChangeCategory,
     setAllCategories,
-    isCategoriesSuccess,
+    isCategoriesSuccess
   } = useCategoryList();
 
   return (
@@ -20,7 +20,7 @@ const CategoriesList = () => {
             <CategoriesListItem
               communitiesCounter={allCommunitiesCounter}
               isSelected={!currentCategory}
-              label="All"
+              label="Todos"
               onClick={setAllCategories}
             />
 

@@ -1,16 +1,16 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { NotificationStartFollowType } from '@/types/db';
-import Link from 'next/link';
-import ReactTimeAgo from 'react-time-ago';
-import NotificationCardWrapper from './notification-card-wrapper';
+import { NotificationStartFollowType } from "@/types/db";
+import Link from "next/link";
+import ReactTimeAgo from "react-time-ago";
+import NotificationCardWrapper from "./notification-card-wrapper";
 
 interface NotificationStartFolowCardProps {
   notification: NotificationStartFollowType;
 }
 
 const NotificationsStartFollowCard = ({
-  notification,
+  notification
 }: NotificationStartFolowCardProps) => (
   <Link href={`user/${notification.userId}`}>
     <a className="block">
@@ -23,7 +23,7 @@ const NotificationsStartFollowCard = ({
           <span className="font-medium  text-primary-800 dark:text-primary-dark-800 mr-1">
             {notification.user.name}
           </span>
-          started following you
+          empezo a seguirte
         </p>
         <ReactTimeAgo
           date={notification.createdAt}

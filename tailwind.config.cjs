@@ -39,6 +39,14 @@ module.exports = {
           100: '#16181C',
           50: '#000000',
         },
+        system: {
+          DEFAULT: '#36393F', // Morado oscuro similar al primary-dark
+          900: '#202225', // Morado oscuro más profundo
+          800: '#5E636E', // Morado oscuro más claro
+          700: '#7B1FA2', // Púrpura más oscuro
+          600: '#AB47BC', // Morado
+          500: '#CE93D8', // Púrpura malva
+        },
       },
       keyframes: {
         pop: {

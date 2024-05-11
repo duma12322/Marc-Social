@@ -1,5 +1,5 @@
-import { useRouter } from 'next/router';
-import Button from '../common/button';
+import { useRouter } from "next/router";
+import Button from "../common/button";
 
 const CommunitySettingsButton = () => {
   const router = useRouter();
@@ -9,17 +9,17 @@ const CommunitySettingsButton = () => {
     router.replace(
       {
         pathname: `/community/${communityId}`,
-        query: { ...restParams, section: 'settings' },
+        query: { ...restParams, section: "settings" }
       },
       undefined,
       {
         shallow: true,
-        scroll: false,
+        scroll: false
       }
     );
   };
 
-  return <Button onClick={openCommuntiSettingsModal}>Settings</Button>;
+  return <Button onClick={openCommuntiSettingsModal}>Ajustes</Button>;
 };
 
 export default CommunitySettingsButton;

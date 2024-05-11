@@ -1,13 +1,13 @@
-import clsx from 'clsx';
-import { useSession } from 'next-auth/react';
+import clsx from "clsx";
+import { useSession } from "next-auth/react";
 import {
   useDeleteCommentMutation,
-  useToggleCommentLikeMutation,
-} from 'src/hooks/mutation';
-import { CommentDetailsType } from '@/types/db';
-import HeartIcon from '../common/icons/heart';
-import HeartEmptyIcon from '../common/icons/heart-empty';
-import CommentIcon from '../common/icons/comment';
+  useToggleCommentLikeMutation
+} from "src/hooks/mutation";
+import { CommentDetailsType } from "@/types/db";
+import HeartIcon from "../common/icons/heart";
+import HeartEmptyIcon from "../common/icons/heart-empty";
+import CommentIcon from "../common/icons/comment";
 
 interface CommentFooterProps {
   comment: CommentDetailsType;
@@ -17,7 +17,7 @@ interface CommentFooterProps {
 const CommentFooter = ({
   comment,
   toggleIsEditing,
-  toggleIsReplying,
+  toggleIsReplying
 }: CommentFooterProps) => {
   const { data: session } = useSession();
   const me = session?.user!;
@@ -38,8 +38,8 @@ const CommentFooter = ({
       <button
         type="button"
         className={clsx([
-          'flex items-center cursor-pointer w-fit',
-          comment.likedByMe && 'text-red-500',
+          "flex items-center cursor-pointer w-fit",
+          comment.likedByMe && "text-red-500"
         ])}
         onClick={handleToggleLike}
       >
@@ -59,7 +59,7 @@ const CommentFooter = ({
         onClick={toggleIsReplying}
         className="ml-auto font-medium text-xs text-gray-400 hover:text-neutral-800 dark:hover:text-primary-dark-600 transition-colors"
       >
-        Reply
+        Responder
       </button>
       {comment.userId === me.id && (
         <>
@@ -68,14 +68,14 @@ const CommentFooter = ({
             onClick={toggleIsEditing}
             className="ml-3 font-medium text-xs text-gray-400 hover:text-neutral-800 dark:hover:text-primary-dark-600 transition-colors"
           >
-            Edit
+            Editar
           </button>
           <button
             type="button"
             onClick={handleDeleteComment}
             className="ml-3 font-medium text-xs text-red-400 hover:text-red-500 dark:hover:text-red-300 transition-colors"
           >
-            Delete
+            Eliminar
           </button>
         </>
       )}

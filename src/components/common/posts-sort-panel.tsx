@@ -1,6 +1,6 @@
-import { useRouter } from 'next/router';
-import Link from 'next/link';
-import clsx from 'clsx';
+import { useRouter } from "next/router";
+import Link from "next/link";
+import clsx from "clsx";
 
 interface PostsSortPanelProps {
   pathname: string;
@@ -8,6 +8,14 @@ interface PostsSortPanelProps {
 
 const PostsSortPanel = ({ pathname }: PostsSortPanelProps) => {
   const router = useRouter();
+
+  const handleSortChange = (sort: string, time: string) => {
+    // Actualizar la ruta con los parámetros de clasificación seleccionados
+    router.push({
+      pathname,
+      query: { sort, time }
+    });
+  };
 
   const sort = router.query.sort as string | undefined;
   const time = router.query.time as string | undefined;
@@ -18,93 +26,103 @@ const PostsSortPanel = ({ pathname }: PostsSortPanelProps) => {
         <li>
           <Link
             href={{
-              pathname,
+              pathname
             }}
             shallow
             replace
           >
-            <a
+            <button
+              type="button"
               className={clsx(
-                'text-md lg:text-lg p-2 lg:p-3 block',
-                !sort && 'font-bold'
+                "text-md lg:text-lg p-2 lg:p-3 block",
+                !sort && "font-bold"
               )}
+              onClick={() => handleSortChange("latest", "all")}
             >
-              Latest
-            </a>
+              Ultimo
+            </button>
           </Link>
         </li>
         <li>
           <Link
             href={{
               pathname,
-              query: { sort: 'top', time: 'all' },
+              query: { sort: "top", time: "all" }
             }}
             shallow
             replace
           >
-            <a
+            <button
+              type="button"
               className={clsx(
-                'text-md lg:text-lg p-2 lg:p-3 block',
-                sort === 'top' && 'font-bold'
+                "text-md lg:text-lg p-2 lg:p-3 block",
+                sort === "top" && "font-bold"
               )}
+              onClick={() => handleSortChange("top", "all")}
             >
-              Top
-            </a>
+              Principales
+            </button>
           </Link>
         </li>
       </ul>
-      {sort === 'top' && (
+      {sort === "top" && (
         <ul className="ml-auto flex">
           <Link
             href={{
               pathname,
-              query: { sort: 'top', time: 'all' },
+              query: { sort: "top", time: "all" }
             }}
             shallow
             replace
           >
-            <a
+            <button
+              type="button"
               className={clsx(
-                'text-md lg:text-lg p-2 lg:p-3 block',
-                time === 'all' && 'font-bold'
+                "text-md lg:text-lg p-2 lg:p-3 block",
+                time === "all" && "font-bold"
               )}
+              onClick={() => handleSortChange("top", "all")}
             >
-              All time
-            </a>
+              Todo el tiempo
+            </button>
           </Link>
           <Link
             href={{
               pathname,
-              query: { sort: 'top', time: 'day' },
+              query: { sort: "top", time: "day" }
             }}
             shallow
             replace
           >
-            <a
+            <button
+              type="button"
               className={clsx(
-                'text-md lg:text-lg p-2 lg:p-3 block',
-                time === 'day' && 'font-bold'
+                "text-md lg:text-lg p-2 lg:p-3 block",
+                time === "day" && "font-bold"
               )}
+              onClick={() => handleSortChange("top", "day")}
             >
-              Day
-            </a>
+              Dia
+            </button>
           </Link>
           <Link
             href={{
               pathname,
-              query: { sort: 'top', time: 'week' },
+              query: { sort: "top", time: "week" }
             }}
             shallow
             replace
           >
-            <a
+            <button
+              type="button"
               className={clsx(
-                'text-md lg:text-lg p-2 lg:p-3 block',
-                time === 'week' && 'font-bold'
+                "text-md lg:text-lg p-2 lg:p-3 block",
+                time === "week" && "font-bold"
               )}
+              onClick={() => handleSortChange("top", "week")}
             >
-              Week
-            </a>
+              Semana
+            </button>
           </Link>
         </ul>
       )}

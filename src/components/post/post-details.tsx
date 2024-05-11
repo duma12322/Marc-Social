@@ -1,20 +1,20 @@
-import { usePostQuery, usePostCommentsQuery } from 'src/hooks/query';
-import { useAddCommentMutation } from 'src/hooks/mutation';
-import CommentsList from '@/components/comments-list/comments-list';
-import CommentInput from '@/components/comments-list/comment-input';
-import { useRouter } from 'next/router';
-import { useEffect } from 'react';
-import Author from '../post-card/author';
-import TagsList from '../post-card/tags-list';
-import PostCardFooter from '../post-card/post-card-footer';
-import PostThumbnail from './post-thumbnail';
-import CommunityBadge from '../post-card/community-badge';
-import PostCardLink from '../post-card/post-card-link';
-import ErrorFallback from '../common/error-fallback';
-import Loading from '../common/loading';
-import ImageGallery from './image-gallery';
-import RepostBadge from '../post-card/repost-badge';
-import MentionsList from '../post-card/mentions-list';
+import { usePostQuery, usePostCommentsQuery } from "src/hooks/query";
+import { useAddCommentMutation } from "src/hooks/mutation";
+import CommentsList from "@/components/comments-list/comments-list";
+import CommentInput from "@/components/comments-list/comment-input";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import Author from "../post-card/author";
+import TagsList from "../post-card/tags-list";
+import PostCardFooter from "../post-card/post-card-footer";
+import PostThumbnail from "./post-thumbnail";
+import CommunityBadge from "../post-card/community-badge";
+import PostCardLink from "../post-card/post-card-link";
+import ErrorFallback from "../common/error-fallback";
+import Loading from "../common/loading";
+import ImageGallery from "./image-gallery";
+import RepostBadge from "../post-card/repost-badge";
+import MentionsList from "../post-card/mentions-list";
 
 interface PostDetailsProps {
   postId: string;
@@ -26,7 +26,7 @@ const PostDetails = ({ postId }: PostDetailsProps) => {
   const {
     data: post,
     isError,
-    isSuccess: isPostSuccess,
+    isSuccess: isPostSuccess
   } = usePostQuery(postId);
 
   const { data: comments, isSuccess: isCommentsSuccess } =
@@ -37,27 +37,27 @@ const PostDetails = ({ postId }: PostDetailsProps) => {
   const handleAddComment = (message: string) => {
     addComment({
       message,
-      parentId: null,
+      parentId: null
     });
   };
 
   useEffect(() => {
     if (!isCommentsSuccess) return;
-    const commentId = router.asPath.split('#')[1];
+    const commentId = router.asPath.split("#")[1];
     if (!commentId) return;
     const selector = `#comment-${commentId}`;
     try {
       const commentElement = document.querySelector(selector);
       if (!commentElement) return;
-      commentElement.scrollIntoView({ behavior: 'smooth' });
+      commentElement.scrollIntoView({ behavior: "smooth" });
     } catch (e) {
       // eslint-disable-next-line no-console
-      console.log('invalide comment id');
+      console.log("invalide comment id");
     }
   }, [router.asPath, isCommentsSuccess]);
 
   if (isError) {
-    return <ErrorFallback message="This post does't exists" />;
+    return <ErrorFallback message="Esta publicación no existe" />;
   }
 
   return (

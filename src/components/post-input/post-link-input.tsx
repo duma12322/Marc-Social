@@ -1,7 +1,7 @@
-import { Control, UseFormRegister, useWatch } from 'react-hook-form';
-import clsx from 'clsx';
-import LinkIcon from '../common/icons/link';
-import { PostInputFormType } from './types';
+import { Control, UseFormRegister, useWatch } from "react-hook-form";
+import clsx from "clsx";
+import LinkIcon from "../common/icons/link";
+import { PostInputFormType } from "./types";
 
 const URL_REGEX =
   /[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/;
@@ -19,12 +19,12 @@ const PostLinkInput = ({
   register,
   isLinkError,
   control,
-  disabled,
+  disabled
 }: PostLinkInputProps) => {
   const { isOpen } = useWatch({
     control,
-    name: 'link',
-    defaultValue: { value: '', isOpen: false },
+    name: "link",
+    defaultValue: { value: "", isOpen: false }
   });
 
   const isLinkInputValid = (value: string | undefined) => {
@@ -37,14 +37,14 @@ const PostLinkInput = ({
       {isOpen && (
         <div className="mb-2">
           <input
-            {...register('link.value', {
-              validate: (value) => isLinkInputValid(value),
+            {...register("link.value", {
+              validate: (value) => isLinkInputValid(value)
             })}
             className={clsx(
-              'block  w-full text-md h-8 dark:bg-primary-dark-200 dark:placeholder:text-primary-dark-600',
-              isLinkError && 'text-red-500'
+              "block  w-full text-md h-8 dark:bg-primary-dark-200 dark:placeholder:text-primary-dark-600",
+              isLinkError && "text-red-500"
             )}
-            placeholder="Add link"
+            placeholder="Agregar enlace"
             disabled={disabled}
           />
         </div>
@@ -59,7 +59,7 @@ const PostLinkInput = ({
           id="link-toggle"
           type="checkbox"
           className="mr-2 absolute w-full h-full opacity-0 cursor-pointer"
-          {...register('link.isOpen')}
+          {...register("link.isOpen")}
         />
         <LinkIcon />
       </label>

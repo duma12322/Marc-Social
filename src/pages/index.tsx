@@ -1,16 +1,16 @@
-import type { GetServerSidePropsContext, NextPage } from 'next';
-import { unstable_getServerSession } from 'next-auth/next';
-import React from 'react';
-import MainLayout from '@/components/layouts/main-layout';
-import PostList from '@/components/post/post-list';
-import ModalWrapper from '@/components/common/modal-wrapper';
-import PostDetails from '@/components/post/post-details';
-import PostsSortPanel from '@/components/common/posts-sort-panel';
-import Head from 'next/head';
-import useHome from '@/components/home/use-home';
-import HomeFallbackCard from '@/components/home/home-fallback-card';
-import HomePostIput from '@/components/home/home-post-input';
-import { authOptions } from './api/auth/[...nextauth]';
+import type { GetServerSidePropsContext, NextPage } from "next";
+import { unstable_getServerSession } from "next-auth/next";
+import React from "react";
+import MainLayout from "@/components/layouts/main-layout";
+import PostList from "@/components/post/post-list";
+import ModalWrapper from "@/components/common/modal-wrapper";
+import PostDetails from "@/components/post/post-details";
+import PostsSortPanel from "@/components/common/posts-sort-panel";
+import Head from "next/head";
+import useHome from "@/components/home/use-home";
+import HomeFallbackCard from "@/components/home/home-fallback-card";
+import HomePostIput from "@/components/home/home-post-input";
+import { authOptions } from "./api/auth/[...nextauth]";
 
 const Home: NextPage = () => {
   const {
@@ -19,13 +19,13 @@ const Home: NextPage = () => {
     fetchNextPage,
     hasNextPage,
     showcasedPostId,
-    isPostsNotExists,
+    isPostsNotExists
   } = useHome();
 
   return (
     <>
       <Head>
-        <title>Social Network</title>
+        <title>Marc´Social</title>
         <meta property="og:title" content="Twitterek" />
       </Head>
       <MainLayout>
@@ -60,13 +60,13 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   if (!session) {
     return {
       redirect: {
-        destination: '/api/auth/signin',
-        permanent: false,
-      },
+        destination: "/api/auth/signin",
+        permanent: false
+      }
     };
   }
   return {
-    props: { session },
+    props: { session }
   };
 }
 

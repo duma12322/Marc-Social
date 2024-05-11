@@ -1,28 +1,28 @@
-import React, { useEffect, useState } from 'react';
-import { useSearchQuery } from 'src/hooks/query';
-import { useRouter } from 'next/router';
-import { useDebounce, useReadLocalStorage } from 'usehooks-ts';
-import useSuggestionList from 'src/hooks/use-suggestion-popup';
-import { SearchType } from 'src/server/router/types';
-import SearchCard from '@/components/header/search-card';
-import SearchIcon from '@/components/common/icons/search';
-import type { SearchEntryType } from '@/types/db';
-import useSearchHistory from './use-search-history';
+import React, { useEffect, useState } from "react";
+import { useSearchQuery } from "src/hooks/query";
+import { useRouter } from "next/router";
+import { useDebounce, useReadLocalStorage } from "usehooks-ts";
+import useSuggestionList from "src/hooks/use-suggestion-popup";
+import { SearchType } from "src/server/router/types";
+import SearchCard from "@/components/header/search-card";
+import SearchIcon from "@/components/common/icons/search";
+import type { SearchEntryType } from "@/types/db";
+import useSearchHistory from "./use-search-history";
 
 const SearchBar = () => {
   const router = useRouter();
 
-  const [searchPhrase, setSearchPhrase] = useState('');
+  const [searchPhrase, setSearchPhrase] = useState("");
   const debouncedSearchPhrase = useDebounce(searchPhrase, 300);
 
   const { data: searchData } = useSearchQuery(debouncedSearchPhrase);
   const { addSearchHistoryEntry, clearSearchHistory } = useSearchHistory();
 
   const searchHistory =
-    (useReadLocalStorage('searchHistory') as SearchEntryType[]) || [];
+    (useReadLocalStorage("searchHistory") as SearchEntryType[]) || [];
 
   useEffect(() => {
-    setSearchPhrase('');
+    setSearchPhrase("");
   }, [router.asPath]);
 
   const onSelect = (searchEntry: SearchEntryType) => {
@@ -41,7 +41,7 @@ const SearchBar = () => {
   const { suggestionData, selectedItemIndex, wrapperProps, inputProps } =
     useSuggestionList({
       data,
-      onSelect,
+      onSelect
     });
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -66,14 +66,14 @@ const SearchBar = () => {
         {!!suggestionData.length && !searchPhrase && (
           <div className="flex justify-between mx-4 my-2 items-baseline">
             <div className="text-md font-semibold font-poppins  text-primary-800 dark:text-primary-dark-600">
-              Recent
+              Reciente
             </div>
             <button
               className="text-xs font-semibold font-poppins  text-red-400"
               onClick={clearSearchHistory}
               type="button"
             >
-              Clear all
+              Eliminar Todo
             </button>
           </div>
         )}

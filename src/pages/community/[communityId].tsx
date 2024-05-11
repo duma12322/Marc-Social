@@ -1,14 +1,14 @@
-import { GetServerSidePropsContext } from 'next';
-import { unstable_getServerSession } from 'next-auth';
-import PostList from '@/components/post/post-list';
-import CommunityProfileHero from '@/components/community/community-profile-hero';
-import Layout from '@/components/layouts/main-layout';
-import PostsSortPanel from '@/components/common/posts-sort-panel';
-import ErrorFallback from '@/components/common/error-fallback';
-import Head from 'next/head';
-import CommunityPostInput from '@/components/community/community-post-input';
-import useCommunity from '@/components/community/use-community';
-import { authOptions } from '../api/auth/[...nextauth]';
+import { GetServerSidePropsContext } from "next";
+import { unstable_getServerSession } from "next-auth";
+import PostList from "@/components/post/post-list";
+import CommunityProfileHero from "@/components/community/community-profile-hero";
+import Layout from "@/components/layouts/main-layout";
+import PostsSortPanel from "@/components/common/posts-sort-panel";
+import ErrorFallback from "@/components/common/error-fallback";
+import Head from "next/head";
+import CommunityPostInput from "@/components/community/community-post-input";
+import useCommunity from "@/components/community/use-community";
+import { authOptions } from "../api/auth/[...nextauth]";
 
 const Community = () => {
   const { fetchNextPage, hasNextPage, isError, posts, community, communityId } =
@@ -18,11 +18,11 @@ const Community = () => {
     return (
       <>
         <Head>
-          <title>Community</title>
+          <title>Comunidad</title>
           <meta property="og:title" content="Community" />
         </Head>
         <Layout>
-          <ErrorFallback message="This community does't exists" />
+          <ErrorFallback message="Esta comunidad no existe" />
         </Layout>
       </>
     );
@@ -31,7 +31,7 @@ const Community = () => {
   return (
     <>
       <Head>
-        <title>community - {community?.name}</title>
+        <title>comunidad - {community?.name}</title>
         <meta
           property="og:title"
           content={`community - ${community?.name}`}
@@ -64,14 +64,14 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   if (!session) {
     return {
       redirect: {
-        destination: '/api/auth/signin',
-        permanent: false,
-      },
+        destination: "/api/auth/signin",
+        permanent: false
+      }
     };
   }
 
   return {
-    props: { session },
+    props: { session }
   };
 }
 export default Community;

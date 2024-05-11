@@ -1,15 +1,15 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { NotificationCommentReply } from '@/types/db';
-import Link from 'next/link';
-import ReactTimeAgo from 'react-time-ago';
-import NotificationCardWrapper from './notification-card-wrapper';
+import { NotificationCommentReply } from "@/types/db";
+import Link from "next/link";
+import ReactTimeAgo from "react-time-ago";
+import NotificationCardWrapper from "./notification-card-wrapper";
 
 interface NotificationCommentReplyCardProps {
   notification: NotificationCommentReply;
 }
 const NotificationCommentReplyCard = ({
-  notification,
+  notification
 }: NotificationCommentReplyCardProps) => (
   <Link href={`post/${notification.postId}#${notification.comentId}`}>
     <a className="block">
@@ -22,7 +22,7 @@ const NotificationCommentReplyCard = ({
           <span className="font-medium text-primary-800 dark:text-primary-dark-800 mr-1">
             {notification.user.name}
           </span>
-          replied to your comment
+          respondió a tu comentario
         </p>
         <ReactTimeAgo
           date={notification.createdAt}

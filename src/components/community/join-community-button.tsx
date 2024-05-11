@@ -1,7 +1,7 @@
-import React from 'react';
-import { toast } from 'react-toastify';
-import { useToggleCommunityMembershipMutation } from 'src/hooks/mutation';
-import Button from '../common/button';
+import React from "react";
+import { toast } from "react-toastify";
+import { useToggleCommunityMembershipMutation } from "src/hooks/mutation";
+import Button from "../common/button";
 
 interface JoinCommunityButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -19,12 +19,12 @@ const JoinCommunityButton = ({
 }: JoinCommunityButtonProps) => {
   const onSuccessCb = () => {
     if (joinedByMe) {
-      toast(`You left community ${communityName}`, {
-        type: 'success',
+      toast(`Dejaste la comunidad ${communityName}`, {
+        type: "success"
       });
     } else {
-      toast(`You joined new community ${communityName}`, {
-        type: 'success',
+      toast(`Te uniste a una nueva comunidad ${communityName}`, {
+        type: "success"
       });
     }
   };
@@ -38,7 +38,7 @@ const JoinCommunityButton = ({
 
   return (
     <Button onClick={handleToggleCommunity} {...buttonProps} isSmall={isSmall}>
-      {joinedByMe ? 'Leave' : 'Join'}
+      {joinedByMe ? "Dejar" : "Unirse"}
     </Button>
   );
 };

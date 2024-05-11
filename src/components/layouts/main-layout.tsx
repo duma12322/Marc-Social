@@ -1,10 +1,11 @@
-import { ReactNode } from 'react';
-import TrendingTagsList from '@/components/common/trending-tags-list';
-import { ToastContainer } from 'react-toastify';
+import { ReactNode } from "react";
+import TrendingTagsList from "@/components/common/trending-tags-list";
+import Advertising from "@/components/common/advertising";
+import { ToastContainer } from "react-toastify";
 
-import Header from '../header/header';
-import BackButton from '../common/back-button';
-import SuggestionList from '../community/suggestion-list';
+import Header from "../header/header";
+import BackButton from "../common/back-button";
+import SuggestionList from "../community/suggestion-list";
 
 interface LayoutProps {
   children: ReactNode;
@@ -21,6 +22,7 @@ const MainLayout = ({ children }: LayoutProps) => (
         </main>
 
         <div className="h-fit max-h-[calc(100vh-92px)] space-y-5 lg:block hidden sticky top-[92px] overflow-auto rounded-xl">
+          <Advertising />
           <TrendingTagsList />
           <SuggestionList />
         </div>

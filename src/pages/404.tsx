@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import Button from '@/components/common/button';
+import Link from "next/link";
+import Image from "next/image";
+import Button from "@/components/common/button";
 
 export default function FourOhFour() {
   return (
@@ -15,10 +15,10 @@ export default function FourOhFour() {
         </div>
         <h1 className="font-poppins text-8xl lg:text-[250px]">404</h1>
         <p className="text-lg lg:text-3xl tracking-wide mb-16 lg:mb-24">
-          Something is missing
+          Algo falta
         </p>
         <Link href="/" passHref>
-          <Button>Go back home</Button>
+          <Button>Regresar</Button>
         </Link>
       </div>
       <div className="hidden  lg:flex w-full items-center justify-center bg-blue-900/90 dark:bg-blue-900/60 p-20">

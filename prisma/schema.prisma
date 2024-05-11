@@ -62,6 +62,10 @@ model User {
   favouriteCommunities           FavouriteCommunity[]
   sharedPost                     UserShare[]
   notifications                  Notification[]
+  facebook                       String?                          @db.Text
+  instagram                      String?                          @db.Text
+  twitter                        String?                          @db.Text
+  whatsapp                       String?                          @db.Text
   // NotificationMention     NotificationMention[]
   notificationStartFollow        NotificationStartFollow[]
   notificationCommunityNewMember NotificationCommunityNewMember[] @relation("userNotificationCommunityNewMember")

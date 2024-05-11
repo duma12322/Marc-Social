@@ -1,11 +1,11 @@
 import {
   useSuggestedCommunitiesQuery,
-  useSuggestedUsersQuery,
-} from '@/hooks/query';
-import Loading from '../common/loading';
-import TextHeader from '../common/text-header';
-import UserCard from '../common/user-card';
-import CommunityCard from './community-card';
+  useSuggestedUsersQuery
+} from "@/hooks/query";
+import Loading from "../common/loading";
+import TextHeader from "../common/text-header";
+import UserCard from "../common/user-card";
+import CommunityCard from "./community-card";
 
 const SuggestionList = () => {
   const { isSuccess: isUsersSuccess, data: userData } =
@@ -23,7 +23,7 @@ const SuggestionList = () => {
 
   return (
     <aside className=" bg-white rounded-xl sticky h-fit top-[92px] dark:bg-primary-dark-200">
-      <TextHeader className=" py-3 px-5 ">May interest you</TextHeader>
+      <TextHeader className=" py-3 px-5 ">Puede interesarte</TextHeader>
       <hr className=" px-5 mx-5 dark:border-primary-700" />
       {isUsersSuccess && isCommunitySuccess ? (
         <>

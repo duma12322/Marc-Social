@@ -1,7 +1,7 @@
-import { useSession } from 'next-auth/react';
-import React, { useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
-import Button from '../common/button';
+import { useSession } from "next-auth/react";
+import React, { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import Button from "../common/button";
 
 interface CommentInputProps {
   onMessageSubmit: (message: string) => void;
@@ -9,7 +9,7 @@ interface CommentInputProps {
 
 const CommentInput = ({ onMessageSubmit }: CommentInputProps) => {
   const { data } = useSession();
-  const [commentMessageValue, setCommentMessageValue] = useState('');
+  const [commentMessageValue, setCommentMessageValue] = useState("");
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 
   const submitDisabled = !commentMessageValue.length;
@@ -18,12 +18,12 @@ const CommentInput = ({ onMessageSubmit }: CommentInputProps) => {
     e.preventDefault();
     if (submitDisabled) return;
     onMessageSubmit(commentMessageValue);
-    setCommentMessageValue('');
+    setCommentMessageValue("");
   };
 
   useEffect(() => {
     if (!textareaRef.current) return;
-    textareaRef.current.style.height = '0px';
+    textareaRef.current.style.height = "0px";
     const { scrollHeight } = textareaRef.current;
     textareaRef.current.style.height = `${scrollHeight}px`;
   }, [commentMessageValue]);
@@ -37,7 +37,7 @@ const CommentInput = ({ onMessageSubmit }: CommentInputProps) => {
     >
       <div className="shrink-0 w-10 h-10 relative mr-3">
         <Image
-          src={me.image || '/images/avatar-fallback.svg'}
+          src={me.image || "/images/avatar-fallback.svg"}
           width="40"
           height="40"
           layout="fixed"
@@ -60,7 +60,7 @@ const CommentInput = ({ onMessageSubmit }: CommentInputProps) => {
         isSmall
         disabled={submitDisabled}
       >
-        Submit
+        Subir
       </Button>
     </form>
   );

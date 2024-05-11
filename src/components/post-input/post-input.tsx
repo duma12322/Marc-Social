@@ -1,16 +1,16 @@
-import { useSession } from 'next-auth/react';
-import clsx from 'clsx';
-import { PostDetailsType } from '@/types/db';
-import PostTagPicker from '@/components/post-input/post-tags-picker';
-import Image from 'next/image';
-import PostFileInput from './post-file-input';
-import EmojiPicker from './emoji-picker';
-import Button from '../common/button';
-import PostMentionsPicker from './post-mentions-picker';
-import 'react-toastify/dist/ReactToastify.css';
-import PostLinkInput from './post-link-input';
-import usePostInput from './use-post-input';
-import PostContent from './post-content';
+import { useSession } from "next-auth/react";
+import clsx from "clsx";
+import { PostDetailsType } from "@/types/db";
+import PostTagPicker from "@/components/post-input/post-tags-picker";
+import Image from "next/image";
+import PostFileInput from "./post-file-input";
+import EmojiPicker from "./emoji-picker";
+import Button from "../common/button";
+import PostMentionsPicker from "./post-mentions-picker";
+import "react-toastify/dist/ReactToastify.css";
+import PostLinkInput from "./post-link-input";
+import usePostInput from "./use-post-input";
+import PostContent from "./post-content";
 
 interface PostInputProps {
   sharedPost?: PostDetailsType;
@@ -21,7 +21,7 @@ interface PostInputProps {
 const PostInput = ({
   sharedPost,
   submitCallback,
-  communityId,
+  communityId
 }: PostInputProps) => {
   const { data: session } = useSession();
   const me = session?.user!;
@@ -39,11 +39,11 @@ const PostInput = ({
     errors,
     content,
     getInputProps,
-    isUploading,
+    isUploading
   } = usePostInput({
     sharedPostId: sharedPost?.id,
     submitCallback,
-    communityId,
+    communityId
   });
 
   return (
@@ -51,7 +51,7 @@ const PostInput = ({
       <div className="flex">
         <div className="w-10 h-10">
           <Image
-            src={me.image || '/images/avatar-fallback.svg'}
+            src={me.image || "/images/avatar-fallback.svg"}
             width="40"
             height="40"
             layout="fixed"
@@ -63,8 +63,8 @@ const PostInput = ({
         <div
           {...getRootProps()}
           className={clsx(
-            'ml-3 w-full',
-            isImageDragged && 'outline-blue-500 outline-dashed'
+            "ml-3 w-full",
+            isImageDragged && "outline-blue-500 outline-dashed"
           )}
         >
           <PostContent
@@ -106,7 +106,7 @@ const PostInput = ({
               <div
                 className="bg-blue-500 w-full h-full"
                 style={{
-                  transform: `translateX(-${100 - finalUploadProgress}%)`,
+                  transform: `translateX(-${100 - finalUploadProgress}%)`
                 }}
               />
             </div>
@@ -120,7 +120,7 @@ const PostInput = ({
           disabled={!isSubmitButtonEnabled}
           className="ml-auto"
         >
-          Share
+          Compartir
         </Button>
       </div>
     </form>

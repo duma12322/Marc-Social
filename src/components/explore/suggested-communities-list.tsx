@@ -1,8 +1,8 @@
 /* eslint-disable react/no-array-index-key */
-import { useSuggestedCommunitiesQuery } from 'src/hooks/query';
-import CommunityCard from '@/components/community/community-card';
-import Masonry from 'react-masonry-css';
-import Loading from '../common/loading';
+import { useSuggestedCommunitiesQuery } from "src/hooks/query";
+import CommunityCard from "@/components/community/community-card";
+import Masonry from "react-masonry-css";
+import Loading from "../common/loading";
 
 const SuggestedCommunitiesList = () => {
   const { data, isSuccess } = useSuggestedCommunitiesQuery();
@@ -13,13 +13,13 @@ const SuggestedCommunitiesList = () => {
 
   const breakpointColumnsObj = {
     default: 2,
-    768: 1,
+    768: 1
   };
 
   return (
     <>
       <h2 className="font-poppins text-lg font-medium text-primary-600 mb-3 dark:text-primary-dark-600">
-        Communities to join
+        Comunidades para unirse
       </h2>
 
       <Masonry

@@ -1,19 +1,19 @@
-import CategoryList from '@/components/community/categories-list';
-import Button from '../common/button';
+import CategoryList from "@/components/community/categories-list";
+import Button from "../common/button";
 
 interface MobileCategoryPanelProps {
   handleOpenCreator: () => void;
 }
 
 const MobileCategoryPanel = ({
-  handleOpenCreator,
+  handleOpenCreator
 }: MobileCategoryPanelProps) => (
   <div className="lg:hidden ">
     <Button
       className="fixed bottom-2 right-2 rounded-full w-min text-sm shadow-lg"
       onClick={handleOpenCreator}
     >
-      Create community
+      Crear comunidad
     </Button>
     <CategoryList />
     <div className="mb-2" />

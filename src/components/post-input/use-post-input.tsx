@@ -1,10 +1,10 @@
-import { useDropzone } from 'react-dropzone';
-import { SubmitErrorHandler, useForm } from 'react-hook-form';
-import { toast } from 'react-toastify';
-import uploadImage from 'src/utils/cloudinary';
-import { useAddPostMutation } from '@/hooks/mutation';
-import { useState } from 'react';
-import { PostInputFormType } from './types';
+import { useDropzone } from "react-dropzone";
+import { SubmitErrorHandler, useForm } from "react-hook-form";
+import { toast } from "react-toastify";
+import uploadImage from "src/utils/cloudinary";
+import { useAddPostMutation } from "@/hooks/mutation";
+import { useState } from "react";
+import { PostInputFormType } from "./types";
 
 const MAX_FILES_NUMBER = 4;
 
@@ -17,7 +17,7 @@ interface UsePostInputProps {
 const usePostInput = ({
   submitCallback,
   communityId,
-  sharedPostId,
+  sharedPostId
 }: UsePostInputProps) => {
   const [isUploading, setIsUploading] = useState(false);
   const {
@@ -28,29 +28,29 @@ const usePostInput = ({
     watch,
     reset,
     control,
-    formState: { errors },
+    formState: { errors }
   } = useForm<PostInputFormType>({
     defaultValues: {
-      content: '',
+      content: "",
       tags: [],
       mentions: [],
       images: [],
       imagesUploadProgress: [],
       link: {
         isOpen: false,
-        value: undefined,
-      },
-    },
+        value: undefined
+      }
+    }
   });
 
   const addPost = useAddPostMutation(submitCallback);
 
   const setImages = (files: File[]) => {
-    const currentImages = getValues('images');
+    const currentImages = getValues("images");
 
     if (files.length + currentImages.length > MAX_FILES_NUMBER) {
-      toast('You can add up to 4 images', {
-        type: 'error',
+      toast("Puedes agregar hasta 4 imágenes.", {
+        type: "error"
       });
     }
 
@@ -59,41 +59,41 @@ const usePostInput = ({
       MAX_FILES_NUMBER - currentImages.length
     );
 
-    setValue('images', [...getValues('images'), ...imagesToVerify]);
+    setValue("images", [...getValues("images"), ...imagesToVerify]);
   };
 
-  const selectedImages = watch('images');
+  const selectedImages = watch("images");
 
   const {
     getRootProps,
     getInputProps,
     isDragActive: isImageDragged,
-    open: openFilePicker,
+    open: openFilePicker
   } = useDropzone({
     noClick: true,
     accept: {
-      'image/*': ['.png', '.gif', '.jpeg', '.jpg'],
+      "image/*": [".png", ".gif", ".jpeg", ".jpg"]
     },
     onDrop: (files: File[]) => {
       setImages(files);
       setValue(
-        'imagesUploadProgress',
+        "imagesUploadProgress",
         Array(selectedImages.length + files.length).fill(0)
       );
     },
     disabled: isUploading,
     validator: (file: File) => {
-      if (getValues('images').some((image) => image.name === file.name)) {
+      if (getValues("images").some((image) => image.name === file.name)) {
         return {
-          code: 'file-exists',
-          message: `File with name ${file.name} was added already`,
+          code: "file-exists",
+          message: `Archivo con nombre ${file.name} ya fue agregado`
         };
       }
       return null;
-    },
+    }
   });
 
-  const sumOfCurrentUploaded = watch('imagesUploadProgress').reduce(
+  const sumOfCurrentUploaded = watch("imagesUploadProgress").reduce(
     (sum, entry) => sum + entry,
     0
   );
@@ -107,9 +107,9 @@ const usePostInput = ({
     const imageUrls = await Promise.all(
       images.map((file, index) =>
         uploadImage(file, (progress) => {
-          const imagesUploadProgress = getValues('imagesUploadProgress');
+          const imagesUploadProgress = getValues("imagesUploadProgress");
           setValue(
-            'imagesUploadProgress',
+            "imagesUploadProgress",
             imagesUploadProgress.map((val, i) => (i === index ? progress : val))
           );
         })
@@ -120,18 +120,18 @@ const usePostInput = ({
       content,
       images: imageUrls.length
         ? imageUrls.map((image) => ({
-            imageAlt: 'alt',
+            imageAlt: "alt",
             imageUrl: image.url,
             fallbackUrl: image.fallbackUrl,
             width: image.width,
-            height: image.height,
+            height: image.height
           }))
         : null,
       tags,
       mentions: mentions.map((mention) => mention.id),
       shareParentId: sharedPostId,
       communityId,
-      link: getValues('link.isOpen') ?  link.value : undefined,
+      link: getValues("link.isOpen") ? link.value : undefined
     });
 
     reset();
@@ -140,13 +140,13 @@ const usePostInput = ({
 
   const onError: SubmitErrorHandler<PostInputFormType> = (e) => {
     if (e.link) {
-      toast('Provide valid link', {
-        type: 'error',
+      toast("Proporcionar enlace válido", {
+        type: "error"
       });
     }
   };
 
-  const content = watch('content');
+  const content = watch("content");
 
   const handleFormSubmit = handleSubmit(onSubmit, onError);
 
@@ -168,7 +168,7 @@ const usePostInput = ({
     finalUploadProgress,
     isSubmitButtonEnabled,
     errors,
-    content,
+    content
   };
 };
 

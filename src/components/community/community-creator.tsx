@@ -1,12 +1,12 @@
-import { useForm } from 'react-hook-form';
-import { useAddCommunity } from 'src/hooks/mutation';
-import { useCategoryQuery } from 'src/hooks/query';
-import FormInput from '@/components/form/form-input';
-import { toast } from 'react-toastify';
-import FormSelect from '@/components/form/form-select';
-import Button from '../common/button';
-import FormTextarea from '../form/form-textarea';
-import LetterCounter from '../common/letter-counter';
+import { useForm } from "react-hook-form";
+import { useAddCommunity } from "src/hooks/mutation";
+import { useCategoryQuery } from "src/hooks/query";
+import FormInput from "@/components/form/form-input";
+import { toast } from "react-toastify";
+import FormSelect from "@/components/form/form-select";
+import Button from "../common/button";
+import FormTextarea from "../form/form-textarea";
+import LetterCounter from "../common/letter-counter";
 
 interface FormInputType {
   name: string;
@@ -21,7 +21,7 @@ interface CommunityCreatorProps {
 const CommunityCreator = ({ handleCloseCreator }: CommunityCreatorProps) => {
   const onSuccessCb = () => {
     handleCloseCreator();
-    toast('Community created', { type: 'success' });
+    toast("Comunidad creada", { type: "success" });
   };
 
   const addCommunity = useAddCommunity(onSuccessCb);
@@ -32,24 +32,24 @@ const CommunityCreator = ({ handleCloseCreator }: CommunityCreatorProps) => {
     register,
     handleSubmit,
     watch,
-    formState: { errors },
+    formState: { errors }
   } = useForm<FormInputType>({
     defaultValues: {
-      name: '',
-      category: '',
-      description: '',
-    },
+      name: "",
+      category: "",
+      description: ""
+    }
   });
 
   const onSubmit = (data: FormInputType) => {
     addCommunity({
       name: data.name,
       categoryId: data.category,
-      description: data.description,
+      description: data.description
     });
   };
 
-  if (!isSuccess) return <>Loading</>;
+  if (!isSuccess) return <>Cargando</>;
 
   return (
     <form
@@ -57,45 +57,45 @@ const CommunityCreator = ({ handleCloseCreator }: CommunityCreatorProps) => {
       className="flex flex-col space-y-4 pt-2"
     >
       <FormInput
-        label="name"
+        label="nombre"
         name="name"
         error={errors.name}
         rules={{
           required: {
             value: true,
-            message: 'Name is required',
+            message: "El nombre es requerido"
           },
           minLength: {
-            message: 'Name must be at least 3 characters long',
-            value: 3,
+            message: "El nombre debe tener al menos 3 caracteres.",
+            value: 3
           },
           maxLength: {
-            message: 'Name can be up to 30 characters long',
-            value: 30,
-          },
+            message: "El nombre puede tener hasta 30 caracteres",
+            value: 30
+          }
         }}
         register={register}
       />
       <div className="relative">
         <FormTextarea
-          label="description"
+          label="descripcion"
           name="description"
           error={errors.description}
           register={register}
           rules={{
             maxLength: {
-              message: 'Description can be up to 300 characters long',
-              value: 300,
-            },
+              message: "La descripción puede tener hasta 300 caracteres.",
+              value: 300
+            }
           }}
         />
         <LetterCounter
-          currentLength={watch('description').length}
+          currentLength={watch("description").length}
           maxLength={300}
         />
       </div>
       <FormSelect
-        label="category"
+        label="categoria"
         error={errors.category}
         name="category"
         register={register}
@@ -104,11 +104,11 @@ const CommunityCreator = ({ handleCloseCreator }: CommunityCreatorProps) => {
         rules={{
           required: {
             value: true,
-            message: 'Category is required',
-          },
+            message: "La Categoria es requerida"
+          }
         }}
       />
-      <Button className="mt-3">Submit</Button>
+      <Button className="mt-3">Subir</Button>
     </form>
   );
 };

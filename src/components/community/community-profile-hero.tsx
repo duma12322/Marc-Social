@@ -1,15 +1,15 @@
 /* eslint-disable @typescript-eslint/no-shadow */
-import Link from 'next/link';
-import Image from 'next/image';
-import { useRouter } from 'next/router';
-import { CommunityDetailsType } from '@/types/db';
-import ModalWrapper from '@/components/common/modal-wrapper';
-import Members from './members-list';
-import JoinCommunityButton from './join-community-button';
-import CommunitySettingsButton from './community-settings-button';
-import CommunitySettings from './community-settings';
-import CommunityFavouriteIcon from './community-favourite-icon';
-import Loading from '../common/loading';
+import Link from "next/link";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import { CommunityDetailsType } from "@/types/db";
+import ModalWrapper from "@/components/common/modal-wrapper";
+import Members from "./members-list";
+import JoinCommunityButton from "./join-community-button";
+import CommunitySettingsButton from "./community-settings-button";
+import CommunitySettings from "./community-settings";
+import CommunityFavouriteIcon from "./community-favourite-icon";
+import Loading from "../common/loading";
 
 interface CommunityProfileHeroProps {
   community: CommunityDetailsType | undefined;
@@ -17,7 +17,7 @@ interface CommunityProfileHeroProps {
 
 const CommunityProfileHero = ({ community }: CommunityProfileHeroProps) => {
   const router = useRouter();
-  const basePath = router.asPath.split('?')[0]!;
+  const basePath = router.asPath.split("?")[0]!;
   const { section } = router.query;
 
   const closeModal = () => {
@@ -25,12 +25,12 @@ const CommunityProfileHero = ({ community }: CommunityProfileHeroProps) => {
     router.replace(
       {
         pathname: `/community/${communityId}`,
-        query: { ...restParams },
+        query: { ...restParams }
       },
       undefined,
       {
         shallow: true,
-        scroll: false,
+        scroll: false
       }
     );
   };
@@ -39,7 +39,7 @@ const CommunityProfileHero = ({ community }: CommunityProfileHeroProps) => {
     const { communityId, ...restParams } = router.query;
     return {
       pathname: basePath,
-      query: { ...restParams, section: 'members' },
+      query: { ...restParams, section: "members" }
     };
   };
 
@@ -58,14 +58,14 @@ const CommunityProfileHero = ({ community }: CommunityProfileHeroProps) => {
           alt=""
           layout="fill"
           objectFit="cover"
-          src={community?.bannerImage || '/images/fallback.svg'}
+          src={community?.bannerImage || "/images/fallback.svg"}
         />
       </div>
 
       <div className="flex p-6 min-h-[160px] rounded-xl bg-primary-0 dark:bg-primary-dark-200 mb-10 relative -mt-10 flex-col md:flex-row items-center md:items-start">
         <div className="relative -mt-20 p-1 bg-primary-0 dark:bg-primary-dark-200 rounded-lg shrink-0 w-fit">
           <Image
-            src={community.image || '/images/community-fallback.svg'}
+            src={community.image || "/images/community-fallback.svg"}
             width="150"
             height="150"
             className="rounded-lg"
@@ -92,7 +92,7 @@ const CommunityProfileHero = ({ community }: CommunityProfileHeroProps) => {
                       <span className="text-neutral-800 dark:text-primary-dark-700 font-semibold mr-1 font-poppins">
                         {community.membersCount}
                       </span>
-                      Members
+                      Miembros
                     </p>
                   </a>
                 </Link>
@@ -121,12 +121,12 @@ const CommunityProfileHero = ({ community }: CommunityProfileHeroProps) => {
           </p>
         </div>
       </div>
-      {section === 'members' && (
+      {section === "members" && (
         <ModalWrapper title="Members" handleCloseModal={closeModal}>
           <Members />
         </ModalWrapper>
       )}
-      {section === 'settings' && (
+      {section === "settings" && (
         <ModalWrapper title="Settings" handleCloseModal={closeModal}>
           <CommunitySettings
             communityDetails={community}

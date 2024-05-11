@@ -1,11 +1,11 @@
-import Loading from '../common/loading';
-import NotificationMentionCard from './notification-mentions-card';
-import NotificationsStartFollowCard from './notification-start-follow-card';
-import NotificationsCommunityNewMemberCard from './notification-community-new-member-card';
-import NotificationPostCommentCard from './notification-post-comment-card';
-import NotificationCommentReplyCard from './notification-comment-reply-card';
-import useNotificationList from './use-notification-list';
-import FallbackCard from '../common/fallback-card';
+import Loading from "../common/loading";
+import NotificationMentionCard from "./notification-mentions-card";
+import NotificationsStartFollowCard from "./notification-start-follow-card";
+import NotificationsCommunityNewMemberCard from "./notification-community-new-member-card";
+import NotificationPostCommentCard from "./notification-post-comment-card";
+import NotificationCommentReplyCard from "./notification-comment-reply-card";
+import useNotificationList from "./use-notification-list";
+import FallbackCard from "../common/fallback-card";
 
 const NotificationsList = () => {
   const {
@@ -15,7 +15,7 @@ const NotificationsList = () => {
     isNotificationCommunityNewMember,
     isNotificationMention,
     isNotificationStartFollow,
-    isNotificationsPostComment,
+    isNotificationsPostComment
   } = useNotificationList();
 
   if (!isSuccess)
@@ -30,7 +30,7 @@ const NotificationsList = () => {
   if (isSuccess && !flattedNotifications.length) {
     return (
       <FallbackCard>
-        when something important happens, we&apos;ll let you know about it 😉
+        cuando pase algo importante, te lo haremos saber 😉
       </FallbackCard>
     );
   }
@@ -55,7 +55,7 @@ const NotificationsList = () => {
             <NotificationsCommunityNewMemberCard key={n.id} notification={n} />
           );
         }
-        throw new Error('Unsupported type');
+        throw new Error("Unsupported type");
       })}
     </div>
   );

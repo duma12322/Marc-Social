@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from "next/image";
 
 const DeletedCommenFallback = () => (
   <div className="shadow-sm py-3 mb-3">
@@ -10,7 +10,7 @@ const DeletedCommenFallback = () => (
         alt=""
         className="rounded-md"
       />
-      <p className="font-medium ml-4">removed</p>
+      <p className="font-medium ml-4">Eliminar</p>
     </div>
   </div>
 );

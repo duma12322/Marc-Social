@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import Link from 'next/link';
-import ShareIcon from '../common/icons/share';
+import Link from "next/link";
+import ShareIcon from "../common/icons/share";
 
 interface RepostBadgeProps {
   users: { name: string | null; id: string }[];
@@ -25,7 +25,7 @@ const RepostBadge = ({ users }: RepostBadgeProps) => (
           </a>
         </Link>
       ))}
-      <p className="ml-1">reshared</p>
+      <p className="ml-1">compartido</p>
     </div>
   </div>
 );

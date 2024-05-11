@@ -1,10 +1,10 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import useSuggestionList from 'src/hooks/use-suggestion-popup';
-import clsx from 'clsx';
-import { ChangeEvent, useState } from 'react';
-import { useSearchUsersQuery } from 'src/hooks/query';
-import type { SearchUserType } from '@/types/db';
+import useSuggestionList from "src/hooks/use-suggestion-popup";
+import clsx from "clsx";
+import { ChangeEvent, useState } from "react";
+import { useSearchUsersQuery } from "src/hooks/query";
+import type { SearchUserType } from "@/types/db";
 
 interface PostTagsInputProps {
   mentions: SearchUserType[];
@@ -12,17 +12,17 @@ interface PostTagsInputProps {
 }
 
 const PostMentionsInput = ({ setMentions, mentions }: PostTagsInputProps) => {
-  const [mentionInputValue, setMentionInputValue] = useState('');
+  const [mentionInputValue, setMentionInputValue] = useState("");
 
   const addMention = (mention: SearchUserType) => {
     const userId = mention.id;
     const isAlreadyInState = mentions.some((m) => m.id === userId);
     if (isAlreadyInState) {
-      setMentionInputValue('');
+      setMentionInputValue("");
       return;
     }
     setMentions([...mentions, mention]);
-    setMentionInputValue('');
+    setMentionInputValue("");
   };
 
   const { data } = useSearchUsersQuery(mentionInputValue);
@@ -32,12 +32,12 @@ const PostMentionsInput = ({ setMentions, mentions }: PostTagsInputProps) => {
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     switch (e.key) {
-      case 'ArrowUp':
-      case 'ArrowDown':
-      case 'Enter':
+      case "ArrowUp":
+      case "ArrowDown":
+      case "Enter":
         e.preventDefault();
         break;
-      case 'Backspace':
+      case "Backspace":
         if (!mentionInputValue.length && mentions.length) {
           setMentions([...mentions.slice(0, -1)]);
         }
@@ -55,7 +55,7 @@ const PostMentionsInput = ({ setMentions, mentions }: PostTagsInputProps) => {
     <div className="relative flex-grow flex " {...wrapperProps}>
       <input
         className="text-md w-[100px] flex-grow dark:bg-primary-dark-200 h-8 dark:placeholder:text-primary-dark-600"
-        placeholder={mentions.length ? 'Add another...' : 'Add mention'}
+        placeholder={mentions.length ? "Agregar otro..." : "Agregar mención"}
         value={mentionInputValue}
         onChange={onChange}
         onKeyDown={onKeyDown}
@@ -67,9 +67,9 @@ const PostMentionsInput = ({ setMentions, mentions }: PostTagsInputProps) => {
             onClick={() => addMention(mention)}
             key={mention.id}
             className={clsx([
-              'p-3 bg-white fle flex-col cursor-pointer hover:bg-blue-50 dark:bg-primary-dark-200 hover:dark:bg-primary-dark-300',
+              "p-3 bg-white fle flex-col cursor-pointer hover:bg-blue-50 dark:bg-primary-dark-200 hover:dark:bg-primary-dark-300",
               selectedItemIndex === index &&
-                'bg-primary-100 dark:bg-primary-dark-300',
+                "bg-primary-100 dark:bg-primary-dark-300"
             ])}
           >
             {mention.name}

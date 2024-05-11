@@ -1,9 +1,9 @@
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from "@prisma/client";
 import {
   createRandomImage,
   createRandomPost,
-  createRandomUser,
-} from './data/faker-data';
+  createRandomUser
+} from "./data/faker-data";
 
 const prisma = new PrismaClient();
 
@@ -16,15 +16,16 @@ async function main() {
     USERS.push(createRandomUser());
   });
 
-  const usersIds = USERS.map((user) => user.id);
+  const usersIds = USERS.map(user => user.id);
 
   Array.from({ length: 200 }).forEach(() => {
-    const randomAuthorId =
-      usersIds[Math.floor(Math.random() * usersIds.length)]!;
+    const randomAuthorId = usersIds[
+      Math.floor(Math.random() * usersIds.length)
+    ]!;
     POSTS.push(createRandomPost(randomAuthorId));
   });
 
-  const postIds = POSTS.map((post) => post.id);
+  const postIds = POSTS.map(post => post.id);
 
   Array.from({ length: 200 }).forEach(() => {
     const randomPostId = postIds[Math.floor(Math.random() * postIds.length)]!;
@@ -32,34 +33,34 @@ async function main() {
   });
 
   await prisma.user.createMany({
-    data: USERS.map((user) => ({
+    data: USERS.map(user => ({
       id: user.id,
       bannerImage: user.bannerImage,
       bio: user.bio,
       email: user.email,
       image: user.image,
-      name: user.name,
-    })),
+      name: user.name
+    }))
   });
 
   await prisma.post.createMany({
-    data: POSTS.map((post) => ({
+    data: POSTS.map(post => ({
       id: post.id,
       content: post.content.slice(0, 200),
       userId: post.user,
-      createdAt: post.createdAt,
-    })),
+      createdAt: post.createdAt
+    }))
   });
 
   await prisma.image.createMany({
-    data: IMAGES.map((image) => ({
+    data: IMAGES.map(image => ({
       fallbackUrl: "",
       url: image.url,
       postId: image.postId,
-      alt: '',
+      alt: "",
       width: 100,
-      height: 100,
-    })),
+      height: 100
+    }))
   });
 }
 

@@ -1,5 +1,5 @@
-import { useInfiniteFeedQuery } from '@/hooks/query';
-import { useRouter } from 'next/router';
+import { useInfiniteFeedQuery } from "@/hooks/query";
+import { useRouter } from "next/router";
 
 const useHome = () => {
   const router = useRouter();
@@ -12,22 +12,21 @@ const useHome = () => {
     const { postId, ...restParams } = router.query;
     router.push(
       {
-        pathname: '/',
-        query: { ...restParams },
+        pathname: "/",
+        query: { ...restParams }
       },
       undefined,
       {
         shallow: true,
-        scroll: false,
+        scroll: false
       }
     );
   };
 
   const { data, fetchNextPage, hasNextPage, isSuccess } = useInfiniteFeedQuery({
     sort,
-    time,
+    time
   });
-
 
   const isPostsNotExists = isSuccess && !data?.pages[0]?.posts.length;
 
@@ -38,7 +37,7 @@ const useHome = () => {
     data,
     fetchNextPage,
     hasNextPage,
-    isSuccess,
+    isSuccess
   };
 };
 

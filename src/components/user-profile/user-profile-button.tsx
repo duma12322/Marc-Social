@@ -1,7 +1,7 @@
-import { useSession } from 'next-auth/react';
-import { useRouter } from 'next/router';
-import ButtonFollow from '@/components/common/button-follow';
-import Button from '../common/button';
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
+import ButtonFollow from "@/components/common/button-follow";
+import Button from "../common/button";
 
 interface UserProfileButtonProps {
   userId: string;
@@ -11,7 +11,7 @@ interface UserProfileButtonProps {
 const UserProfileButton = ({
   followedByMe,
   userId,
-  userName,
+  userName
 }: UserProfileButtonProps) => {
   const { data: session } = useSession();
   const router = useRouter();
@@ -34,17 +34,17 @@ const UserProfileButton = ({
     router.replace(
       {
         pathname: `/user/${userId}`,
-        query: { ...restParams, section: 'settings' },
+        query: { ...restParams, section: "settings" }
       },
       undefined,
       {
         shallow: true,
-        scroll: false,
+        scroll: false
       }
     );
   };
 
-  return <Button onClick={openCommuntiSettingsModal}>Settings</Button>;
+  return <Button onClick={openCommuntiSettingsModal}>Ajustes</Button>;
 };
 
 export default UserProfileButton;

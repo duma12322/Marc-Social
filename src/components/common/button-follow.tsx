@@ -1,7 +1,7 @@
-import { useSession } from 'next-auth/react';
-import { toast } from 'react-toastify';
-import { useToggleFollowUserMutation } from 'src/hooks/mutation';
-import Button from './button';
+import { useSession } from "next-auth/react";
+import { toast } from "react-toastify";
+import { useToggleFollowUserMutation } from "src/hooks/mutation";
+import Button from "./button";
 
 interface ButtonFollowProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -24,12 +24,12 @@ const ButtonFollow = ({
 
   const onSuccessCb = () => {
     if (followedByMe) {
-      toast(`You stopped following ${userName}`, {
-        type: 'success',
+      toast(`Dejaste de seguir ${userName}`, {
+        type: "success"
       });
     } else {
-      toast(`You started following ${userName}`, {
-        type: 'success',
+      toast(`Empezaste a seguir ${userName}`, {
+        type: "success"
       });
     }
   };
@@ -40,7 +40,7 @@ const ButtonFollow = ({
 
   return (
     <Button onClick={followUser} {...buttonProps} isSmall={isSmall}>
-      {followedByMe ? 'Unfollow' : 'Follow'}
+      {followedByMe ? "Unfollow" : "Follow"}
     </Button>
   );
 };

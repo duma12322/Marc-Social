@@ -1,12 +1,12 @@
-import type { GetServerSidePropsContext } from 'next';
-import { unstable_getServerSession } from 'next-auth/next';
+import type { GetServerSidePropsContext } from "next";
+import { unstable_getServerSession } from "next-auth/next";
 
-import Head from 'next/head';
-import { authOptions } from 'src/pages/api/auth/[...nextauth]';
+import Head from "next/head";
+import { authOptions } from "src/pages/api/auth/[...nextauth]";
 
-import Layout from '@/components/layouts/main-layout';
-import PostList from '@/components/post/post-list';
-import useTag from '@/components/tags/use-tags';
+import Layout from "@/components/layouts/main-layout";
+import PostList from "@/components/post/post-list";
+import useTag from "@/components/tags/use-tags";
 
 const TagPage = () => {
   const { data, fetchNextPage, hasNextPage, tagName } = useTag();
@@ -23,7 +23,7 @@ const TagPage = () => {
             #{tagName}
           </p>
           <p className="text-neutral-600 dark:text-primary-dark-700 font-normal">
-            discover
+            descubrir
           </p>
         </h1>
         <PostList
@@ -46,13 +46,13 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   if (!session) {
     return {
       redirect: {
-        destination: '/api/auth/signin',
-        permanent: false,
-      },
+        destination: "/api/auth/signin",
+        permanent: false
+      }
     };
   }
   return {
-    props: { session },
+    props: { session }
   };
 }
 

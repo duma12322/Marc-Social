@@ -1,6 +1,6 @@
-import { useRouter } from 'next/router';
-import { useUserPostsQuery, useUserQuery } from 'src/hooks/query';
-import { FilterData } from '@/components/user-profile/types';
+import { useRouter } from "next/router";
+import { useUserPostsQuery, useUserQuery } from "src/hooks/query";
+import { FilterData } from "@/components/user-profile/types";
 
 const useUser = () => {
   const router = useRouter();
@@ -13,7 +13,7 @@ const useUser = () => {
   const {
     data: postData,
     fetchNextPage,
-    hasNextPage,
+    hasNextPage
   } = useUserPostsQuery(userId, filter);
 
   const closeModal = () => {
@@ -23,32 +23,32 @@ const useUser = () => {
     router.replace(
       {
         pathname: `/user/${userId}`,
-        query: { ...restParams },
+        query: { ...restParams }
       },
       undefined,
       {
         shallow: true,
-        scroll: false,
+        scroll: false
       }
     );
   };
 
   const filters: FilterData[] = [
     {
-      id: '1',
+      id: "1",
       filterName: undefined,
-      displayName: 'posts & shares',
+      displayName: "Publicaciones y compartidos"
     },
     {
-      id: '2',
-      filterName: 'images',
-      displayName: 'images',
+      id: "2",
+      filterName: "images",
+      displayName: "Imágenes"
     },
     {
-      id: '3',
-      filterName: 'likes',
-      displayName: 'likes',
-    },
+      id: "3",
+      filterName: "likes",
+      displayName: "Me gusta"
+    }
   ];
   return {
     userId,
@@ -59,7 +59,7 @@ const useUser = () => {
     isUserError,
     postData,
     fetchNextPage,
-    hasNextPage,
+    hasNextPage
   };
 };
 

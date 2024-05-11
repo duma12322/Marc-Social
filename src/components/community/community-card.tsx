@@ -1,8 +1,8 @@
-import Image from 'next/image';
-import React from 'react';
-import Link from 'next/link';
-import JoinCommunityButton from './join-community-button';
-import CommunityFavouriteIcon from './community-favourite-icon';
+import Image from "next/image";
+import React from "react";
+import Link from "next/link";
+import JoinCommunityButton from "./join-community-button";
+import CommunityFavouriteIcon from "./community-favourite-icon";
 
 type CommunityCardProps = {
   id: string;
@@ -27,11 +27,11 @@ const CommunityCard = ({
   isOwner,
   joinedByMe,
   isMyfavourite,
-  hasShortDescription,
+  hasShortDescription
 }: CommunityCardProps) => {
   const formattedDescription =
     hasShortDescription && description.length > 100
-      ? description.slice(0, 100).trim().concat('...')
+      ? description.slice(0, 100).trim().concat("...")
       : description;
 
   return (
@@ -40,7 +40,7 @@ const CommunityCard = ({
         <Link href={`/community/${id}`}>
           <div className="shrink-0 cursor-pointer">
             <Image
-              src={image || '/images/community-fallback.svg'}
+              src={image || "/images/community-fallback.svg"}
               width="40"
               height="40"
               layout="fixed"
@@ -60,19 +60,19 @@ const CommunityCard = ({
               </a>
             </Link>
             <p className=" text-neutral-500 dark:text-primary-dark-600 text-xs font-medium">
-              {membersCount} Members
+              {membersCount} Miembros
             </p>
           </div>
 
           <div className="ml-auto flex sm:space-x-1 flex-col-reverse items-baseline justify-end sm:flex-row">
             {isOwner && (
               <div className="ml-auto text-sm  bg-yellow-200 dark:bg-yellow-300 text-yellow-800 px-1 py-[2px] rounded-md mb-1">
-                onwer
+                propietario
               </div>
             )}
             {joinedByMe && (
               <div className="ml-auto text-sm  bg-orange-200 dark:bg-orange-300 text-orange-900 px-1 py-[2px] rounded-md mb-1">
-                joined
+                unido
               </div>
             )}
             <p className="text-sm font-medium font-poppins text-right dark:text-primary-dark-800">

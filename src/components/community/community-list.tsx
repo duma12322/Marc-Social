@@ -1,10 +1,10 @@
-import { useCommunitiesQuery } from '@/hooks/query';
-import { useRouter } from 'next/router';
-import { Fragment, useEffect } from 'react';
-import { useInView } from 'react-intersection-observer';
-import FallbackCard from '../common/fallback-card';
-import Loading from '../common/loading';
-import CommunityCard from './community-card';
+import { useCommunitiesQuery } from "@/hooks/query";
+import { useRouter } from "next/router";
+import { Fragment, useEffect } from "react";
+import { useInView } from "react-intersection-observer";
+import FallbackCard from "../common/fallback-card";
+import Loading from "../common/loading";
+import CommunityCard from "./community-card";
 
 const CommunityList = () => {
   const { ref, inView } = useInView();
@@ -20,11 +20,12 @@ const CommunityList = () => {
   );
 
   const getFallBackMessage = () => {
-    if (filter === 'owned') return 'You can join some community 🤔';
-    if (filter === 'favourite')
-      return 'Your favourite communities will be there 😊';
-    if (filter === 'favourite') return 'You can join any community you like 😊';
-    return 'You can create first community 😊';
+    if (filter === "owned") return "Puedes unirte a alguna comunidad. 🤔";
+    if (filter === "favourite")
+      return "Nuestras comunidades favoritas estarán allí 😊";
+    if (filter === "favourite")
+      return "Puedes unirte a cualquier comunidad que te guste 😊";
+    return "Puedes crear tu primera comunidad 😊";
   };
 
   useEffect(() => {
@@ -49,14 +50,14 @@ const CommunityList = () => {
     <main className="space-y-3">
       <div className="space-y-5 mb-10">
         {data.pages.map((page) => (
-          <Fragment key={page.nextCursor || 'page'}>
+          <Fragment key={page.nextCursor || "page"}>
             {page.posts.map((community) => (
               <div
                 role="link"
                 tabIndex={0}
                 onKeyDown={(e) => {
                   if (e.target !== e.currentTarget) return;
-                  if (e.code === 'Enter') {
+                  if (e.code === "Enter") {
                     goToCommunity(community.id);
                   }
                 }}

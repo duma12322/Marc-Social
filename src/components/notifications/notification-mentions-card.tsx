@@ -1,9 +1,9 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { NotificationMentionsType } from '@/types/db';
-import Link from 'next/link';
-import ReactTimeAgo from 'react-time-ago';
-import NotificationCardWrapper from './notification-card-wrapper';
+import { NotificationMentionsType } from "@/types/db";
+import Link from "next/link";
+import ReactTimeAgo from "react-time-ago";
+import NotificationCardWrapper from "./notification-card-wrapper";
 
 interface NotificationCardProps {
   notification: NotificationMentionsType;
@@ -20,7 +20,7 @@ const NotificationMentionCard = ({ notification }: NotificationCardProps) => (
           <span className="font-medium text-primary-800 dark:text-primary-dark-800 mr-1">
             {notification.postAutor.name}
           </span>
-          has mentioned you in post
+          te ha mencionado en la publicación
         </p>
         <ReactTimeAgo
           date={notification.createdAt}

@@ -1,10 +1,10 @@
-import { PostDetailsType } from '@/types/db';
-import { useState } from 'react';
-import PostInput from '@/components/post-input/post-input';
-import { useToggleUserShareMutation } from '@/hooks/mutation';
-import ModalWrapper from '../common/modal-wrapper';
-import PostThumbnail from '../post/post-thumbnail';
-import Button from '../common/button';
+import { PostDetailsType } from "@/types/db";
+import { useState } from "react";
+import PostInput from "@/components/post-input/post-input";
+import { useToggleUserShareMutation } from "@/hooks/mutation";
+import ModalWrapper from "../common/modal-wrapper";
+import PostThumbnail from "../post/post-thumbnail";
+import Button from "../common/button";
 
 interface PostSharingModalProps {
   closeSharingModal: () => void;
@@ -13,7 +13,7 @@ interface PostSharingModalProps {
 
 const PostSharingModal = ({
   closeSharingModal,
-  sharedPost,
+  sharedPost
 }: PostSharingModalProps) => {
   const [isQuoteShare, setIsQuoteShare] = useState(true);
 
@@ -21,7 +21,7 @@ const PostSharingModal = ({
 
   const handleToggleUserShare = () => {
     toggleUserShare({
-      postId: sharedPost.id,
+      postId: sharedPost.id
     });
   };
 
@@ -29,7 +29,7 @@ const PostSharingModal = ({
     <ModalWrapper handleCloseModal={closeSharingModal} title="Share">
       <div className="flex items-center mt-1">
         <span className="mr-3 text-sm font-medium text-gray-900 dark:text-gray-300">
-          Quote Share
+          Agregar a Compartir
         </span>
         <label
           htmlFor="checked-toggle"
@@ -56,13 +56,15 @@ const PostSharingModal = ({
         </div>
       ) : (
         <>
-          {sharedPost.sharedByMe && <p>You already sharing this post </p>}
+          {sharedPost.sharedByMe && (
+            <p>Ya estás compartiendo esta publicación. </p>
+          )}
           <Button
             type="button"
             className="ml-auto block"
             onClick={handleToggleUserShare}
           >
-            {sharedPost.sharedByMe ? 'Unshare' : 'Share'}
+            {sharedPost.sharedByMe ? "Dejar de compartir" : "Compartir"}
           </Button>
         </>
       )}

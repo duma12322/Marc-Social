@@ -1,7 +1,7 @@
-import { useTrendingTagsQuery } from 'src/hooks/query';
-import Link from 'next/link';
-import TextHeader from './text-header';
-import Loading from './loading';
+import { useTrendingTagsQuery } from "src/hooks/query";
+import Link from "next/link";
+import TextHeader from "./text-header";
+import Loading from "./loading";
 
 const TrendingTagsList = () => {
   const { isSuccess, data } = useTrendingTagsQuery();
@@ -10,7 +10,7 @@ const TrendingTagsList = () => {
 
   return (
     <aside className=" bg-white rounded-xl dark:bg-primary-dark-200">
-      <TextHeader className=" py-3 px-5 ">Trends this week</TextHeader>
+      <TextHeader className=" py-3 px-5 ">Tendencias esta semana</TextHeader>
       <hr className=" px-5 mx-5 dark:border-primary-700" />
       {isSuccess ? (
         data.map((tagData) => (

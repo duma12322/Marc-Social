@@ -1,7 +1,7 @@
-import { useSession } from 'next-auth/react';
-import Link from 'next/link';
-import ButtonFollow from './button-follow';
-import UserProfilePicture from './user-profile-image';
+import { useSession } from "next-auth/react";
+import Link from "next/link";
+import ButtonFollow from "./button-follow";
+import UserProfilePicture from "./user-profile-image";
 
 interface UserCardProps {
   id: string;
@@ -22,7 +22,7 @@ const UserCard = ({
   name,
   mutualUsers,
   followedByMe,
-  hasShortBio,
+  hasShortBio
 }: UserCardProps) => {
   const mutualUserNumber = mutualUsers.length;
 
@@ -31,7 +31,7 @@ const UserCard = ({
 
   const formattedBio =
     hasShortBio && bio.length > 100
-      ? bio.slice(0, 100).trim().concat('...')
+      ? bio.slice(0, 100).trim().concat("...")
       : bio;
 
   return (
@@ -47,11 +47,11 @@ const UserCard = ({
               </a>
             </Link>
             <p className=" text-neutral-500 text-xs font-medium dark:text-primary-dark-600">
-              {followersCount} followers
+              {followersCount} seguidores
             </p>
           </div>
           <ButtonFollow
-            userName={name || ''}
+            userName={name || ""}
             userId={id}
             isSmall
             className="ml-auto mb-auto"
@@ -67,14 +67,14 @@ const UserCard = ({
 
       {myId !== id && mutualUserNumber > 0 && (
         <div className=" text-sm text-neutral-600 dark:text-primary-dark-500">
-          Followed by
+          Seguido por
           {mutualUsers.slice(0, 1).map((user) => (
             <Link key={user.id} href={`/user/${user.id}`}>
               <a className="mx-1 hover:underline">{user.name}</a>
             </Link>
           ))}
           {mutualUserNumber - 1 > 0 && (
-            <span>and others {mutualUserNumber - 1} you follow</span>
+            <span>y otros {mutualUserNumber - 1} sigues</span>
           )}
         </div>
       )}

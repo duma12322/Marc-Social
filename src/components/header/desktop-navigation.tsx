@@ -1,7 +1,7 @@
-import Link from 'next/link';
-import BookmarkEmptyIcon from '../common/icons/bookmark-empty';
-import GraphIcon from '../common/icons/graph';
-import HashIcon from '../common/icons/hash';
+import Link from "next/link";
+import BookmarkEmptyIcon from "../common/icons/bookmark-empty";
+import GraphIcon from "../common/icons/graph";
+import HashIcon from "../common/icons/hash";
 
 const DesktopNavigation = () => (
   <nav className="hidden lg:block ml-auto mr-10">
@@ -14,7 +14,7 @@ const DesktopNavigation = () => (
               height={16}
               className="fill-primary-600 : dark:fill-primary-100"
             />
-            <span className="ml-2">Bookmarks</span>
+            <span className="ml-2">Guardados</span>
           </a>
         </Link>
       </li>
@@ -26,7 +26,7 @@ const DesktopNavigation = () => (
               height={16}
               className="fill-primary-600 : dark:fill-primary-100"
             />
-            <span className="ml-2">Communities</span>
+            <span className="ml-2">Comunidades</span>
           </a>
         </Link>
       </li>
@@ -38,7 +38,7 @@ const DesktopNavigation = () => (
               height={16}
               className="fill-primary-600 : dark:fill-primary-100"
             />
-            <span className="ml-2">Explore</span>
+            <span className="ml-2">Explorar</span>
           </a>
         </Link>
       </li>

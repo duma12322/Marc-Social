@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from "next/image";
 
 const VerifyRequestPage = () => (
   <div className="lg:grid grid-cols-2 min-h-screen bg-white dark:bg-transparent">
@@ -12,10 +12,11 @@ const VerifyRequestPage = () => (
     </div>
     <div className="p-5 lg:p-20 h-full max-w-[800px] mx-auto flex flex-col justify-center">
       <h2 className="font-poppins text-2xl lg:text-5xl font-semibold mb-5">
-        Check your email
+        Consultar su correo electrónico
       </h2>
       <p className="text-lg lg:text-2xl mb-10 lg:mb-20">
-        A sign in link has been sent to your email address.
+        Se ha enviado un enlace de inicio de sesión a su dirección de correo
+        electrónico.
       </p>
     </div>
   </div>

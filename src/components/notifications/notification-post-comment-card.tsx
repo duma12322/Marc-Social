@@ -1,15 +1,15 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { NotificationPostComment } from '@/types/db';
-import Link from 'next/link';
-import ReactTimeAgo from 'react-time-ago';
-import NotificationCardWrapper from './notification-card-wrapper';
+import { NotificationPostComment } from "@/types/db";
+import Link from "next/link";
+import ReactTimeAgo from "react-time-ago";
+import NotificationCardWrapper from "./notification-card-wrapper";
 
 interface NotificationPostCommentCardProps {
   notification: NotificationPostComment;
 }
 const NotificationPostCommentCard = ({
-  notification,
+  notification
 }: NotificationPostCommentCardProps) => (
   <Link href={`post/${notification.postId}#${notification.comentId}`}>
     <a className="block">
@@ -22,7 +22,7 @@ const NotificationPostCommentCard = ({
           <span className="font-medium text-primary-800 dark:text-primary-dark-800 mr-1">
             {notification.user.name}
           </span>
-          commented your post
+          comentó tu publicación
         </p>
 
         <ReactTimeAgo

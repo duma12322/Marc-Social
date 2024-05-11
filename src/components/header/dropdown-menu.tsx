@@ -1,15 +1,15 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import Link from 'next/link';
-import { signOut } from 'next-auth/react';
+import Link from "next/link";
+import { signOut } from "next-auth/react";
 
-import ThemeSwitch from '@/components/common/theme-switch';
-import ProfileIcon from '@/components/common/icons/profile';
-import BookmarkIcon from '@/components/common/icons/bookmark-empty';
-import LogOutIcon from '@/components/common/icons/log-out';
-import GraphIcon from '../common/icons/graph';
-import HashIcon from '../common/icons/hash';
-import ExclamationIcon from '../common/icons/exclamation';
+import ThemeSwitch from "@/components/common/theme-switch";
+import ProfileIcon from "@/components/common/icons/profile";
+import BookmarkIcon from "@/components/common/icons/bookmark-empty";
+import LogOutIcon from "@/components/common/icons/log-out";
+import GraphIcon from "../common/icons/graph";
+import HashIcon from "../common/icons/hash";
+import ExclamationIcon from "../common/icons/exclamation";
 
 interface DropdownMenuProps {
   userId: string;
@@ -20,7 +20,7 @@ interface DropdownMenuProps {
 const DropdownMenu = ({
   userId,
   closeDropDown,
-  notificationCount,
+  notificationCount
 }: DropdownMenuProps) => (
   <>
     <div
@@ -39,7 +39,7 @@ const DropdownMenu = ({
           <Link href={`/user/${userId}`}>
             <a className="px-3 py-3 w-full rounded-lg flex items-center">
               <ProfileIcon />
-              <span className="ml-2">Profile</span>
+              <span className="ml-2">Perfil</span>
             </a>
           </Link>
         </li>
@@ -47,7 +47,7 @@ const DropdownMenu = ({
           <Link href="/bookmarks">
             <a className="px-3 py-3 w-full rounded-lg flex items-center">
               <BookmarkIcon />
-              <span className="ml-2">Bookmarks</span>
+              <span className="ml-2">Guardados</span>
             </a>
           </Link>
         </li>
@@ -55,7 +55,7 @@ const DropdownMenu = ({
           <Link href="/community">
             <a className="px-3 py-3 w-full rounded-lg flex items-center">
               <GraphIcon />
-              <span className="ml-2">Communities</span>
+              <span className="ml-2">Comunidades</span>
             </a>
           </Link>
         </li>
@@ -63,7 +63,7 @@ const DropdownMenu = ({
           <Link href="/explore">
             <a className="px-3 py-3 w-full rounded-lg flex items-center">
               <HashIcon />
-              <span className="ml-2">Explore</span>
+              <span className="ml-2">Explorar</span>
             </a>
           </Link>
         </li>
@@ -71,7 +71,7 @@ const DropdownMenu = ({
           <Link href="/notifications">
             <a className="px-3 py-3 w-full rounded-lg flex items-center relative">
               <ExclamationIcon />
-              <span className="ml-2">Notifications</span>
+              <span className="ml-2">Notificaciones</span>
               {!!notificationCount && (
                 <div className="w-[22px] h-[22px] flex items-center justify-center text-sm text-white bg-red-500 absolute rounded-full right-1 top-1/2 -translate-y-1/2">
                   {notificationCount}

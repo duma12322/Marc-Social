@@ -1,15 +1,16 @@
-import React from "react";
-import { useRouter } from "next/router";
-import Author from "./author";
-import TagsList from "./tags-list";
-import ImagesGrid from "./images-grid";
-import PostCardFooter from "./post-card-footer";
-import PostThumbnail from "../post/post-thumbnail";
-import CommunityBadge from "./community-badge";
-import MentionsList from "./mentions-list";
-import PostCardLink from "./post-card-link";
-import RepostBadge from "./repost-badge";
-import { PostDetailsType } from "@/types/db";
+import React from 'react';
+import { useRouter } from 'next/router';
+// import { useElementSize } from 'usehooks-ts';
+import { PostDetailsType } from '@/types/db';
+import Author from './author';
+import TagsList from './tags-list';
+import ImagesGrid from './images-grid';
+import PostCardFooter from './post-card-footer';
+import PostThumbnail from '../post/post-thumbnail';
+import CommunityBadge from './community-badge';
+import MentionsList from './mentions-list';
+import PostCardLink from './post-card-link';
+import RepostBadge from './repost-badge';
 
 export interface PostCardProps {
   post: PostDetailsType;
@@ -18,8 +19,8 @@ export interface PostCardProps {
 const PostCard = ({ post }: PostCardProps) => {
   const router = useRouter();
 
-  const basePath = router.asPath.split("?")[0];
-  const showModalOnClick = basePath === "/";
+  const basePath = router.asPath.split('?')[0];
+  const showModalOnClick = basePath === '/';
 
   const goToPostDetails = () => {
     const url = showModalOnClick ? `${basePath}` : `/post/${post.id}`;
@@ -27,12 +28,12 @@ const PostCard = ({ post }: PostCardProps) => {
     router.push(
       {
         pathname: url,
-        query: { ...router.query, postId: post.id }
+        query: { ...router.query, postId: post.id },
       },
       `/post/${post.id}`,
       {
         shallow: true,
-        scroll: false
+        scroll: false,
       }
     );
   };
@@ -43,7 +44,7 @@ const PostCard = ({ post }: PostCardProps) => {
       tabIndex={0}
       onKeyDown={(e) => {
         if (e.target !== e.currentTarget) return;
-        if (e.code === "Enter") {
+        if (e.code === 'Enter') {
           goToPostDetails();
         }
       }}
@@ -64,7 +65,7 @@ const PostCard = ({ post }: PostCardProps) => {
           authorId={post.user.id}
           authorImage={post.user.image}
           authorName={post.user.name}
-          postCreatedAt={post.createdAt} // Aquí se llama a la función formatDate
+          postCreatedAt={post.createdAt}
         />
       </div>
       <div className="md:ml-14">

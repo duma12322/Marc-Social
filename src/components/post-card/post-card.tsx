@@ -1,7 +1,5 @@
 import React from "react";
 import { useRouter } from "next/router";
-// import { useElementSize } from 'usehooks-ts';
-import { PostDetailsType } from "@/types/db";
 import Author from "./author";
 import TagsList from "./tags-list";
 import ImagesGrid from "./images-grid";
@@ -11,6 +9,7 @@ import CommunityBadge from "./community-badge";
 import MentionsList from "./mentions-list";
 import PostCardLink from "./post-card-link";
 import RepostBadge from "./repost-badge";
+import { PostDetailsType } from "@/types/db";
 
 export interface PostCardProps {
   post: PostDetailsType;
@@ -38,17 +37,6 @@ const PostCard = ({ post }: PostCardProps) => {
     );
   };
 
-  const formatDate = (date: Date) => {
-    const options: Intl.DateTimeFormatOptions = {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      hour: "numeric",
-      minute: "numeric",
-      second: "numeric"
-    };
-    return date.toLocaleDateString("es-ES", options);
-  };
   return (
     <div
       role="link"
@@ -100,4 +88,5 @@ const PostCard = ({ post }: PostCardProps) => {
     </div>
   );
 };
+
 export default PostCard;

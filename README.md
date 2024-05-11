@@ -38,12 +38,12 @@ Funcionalidades implementadas:
 
 1. Clone repository
 ```
-git clone 
+git clone https://github.com/duma12322/Marc-Social
 ```
 
 2. Go to project directory
 ```
-cd twitter-Marc´Social
+cd Marc´Social
 ```
 
 3. Install dependencies
